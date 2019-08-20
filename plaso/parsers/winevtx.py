@@ -277,6 +277,10 @@ class WinEvtxParser(interface.FileObjectParser):
         parser_mediator.ProduceExtractionWarning(
             'unable to parse event record: {0:d} with error: {1!s}'.format(
                 record_index, exception))
+      except ElementTree.ParseError as exception:
+        parser_mediator.ProduceExtractionWarning(
+            'unable to parse event record: {0:d} with error: {1!s}'.format(
+                record_index, exception))
 
     for record_index in range(evtx_file.number_of_recovered_records):
       if parser_mediator.abort:
